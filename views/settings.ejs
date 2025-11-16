@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TaskNest Settings</title>
+
+  <link rel="stylesheet" href="/css/settings.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <script src="/js/settings.js" defer></script>
+</head>
+<body>
+
+  <div class="container">
+
+    <aside class="sidebar">
+      <h2 class="logo">Task<span>Nest</span></h2>
+
+      <nav>
+        <ul class="menu">
+          <li>
+            <a href="/dashboard">
+              <img src="/images/dashboard.png" alt="Dashboard" />
+              Dashboard
+            </a>
+          </li>
+
+          <li>
+            <a href="/calendar">
+              <img src="/images/calender.png" alt="Calendar" />
+              Calendar
+            </a>
+          </li>
+
+          <li>
+            <a href="/tasks">
+              <img src="/images/tasks.png" alt="Tasks" />
+              Tasks
+            </a>
+          </li>
+
+          <li class="active">
+            <img src="/images/settings.png" alt="Settings" />
+            Settings
+          </li>
+        </ul>
+      </nav>
+
+      <div class="logout">
+        <img src="/images/logout.png" alt="Logout" /> Logout
+      </div>
+    </aside>
+
+    <main class="main">
+
+      <div class="topbar-box">
+        <div class="topbar">
+
+          <div class="topbar-left">
+            <h3>Settings</h3>
+            <p>Manage your account.</p>
+          </div>
+
+          <div class="topbar-right">
+            <input type="text" placeholder="Search..." />
+
+            <button class="notif-btn">
+              <img src="/images/notification.png" alt="Notification" />
+            </button>
+
+            <img src="https://i.pravatar.cc/40" alt="User" class="avatar" />
+          </div>
+
+        </div>
+      </div>
+
+      <div class="settings-form">
+
+        <div class="profile">
+          <img src="https://i.pravatar.cc/60" alt="Alexa Rawles" />
+
+          <div>
+            <h4><%= user?.name || "Alexa Rawles" %></h4>
+            <p><%= user?.email || "alexarawles@gmail.com" %></p>
+          </div>
+
+          <button class="edit-btn">Edit</button>
+        </div>
+
+        <form action="/settings/update" method="POST">
+
+          <div class="form-row">
+            <div class="input-group">
+              <label>Full Name</label>
+              <input type="text" name="fullName" placeholder="Your Full Name" value="<%= user?.name || '' %>" />
+            </div>
+
+            <div class="input-group">
+              <label>Nick Name</label>
+              <input type="text" name="nickName" placeholder="Your Nick Name" value="<%= user?.nickname || '' %>" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="input-group">
+              <label>Gender</label>
+              <input type="text" name="gender" placeholder="Your Gender" value="<%= user?.gender || '' %>" />
+            </div>
+
+            <div class="input-group">
+              <label>Country</label>
+              <input type="text" name="country" placeholder="Your Country Name" value="<%= user?.country || '' %>" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="input-group">
+              <label>Language</label>
+              <input type="text" name="language" placeholder="Your First Language" value="<%= user?.language || '' %>" />
+            </div>
+
+            <div class="input-group">
+              <label>Time Zone</label>
+              <input type="text" name="timezone" placeholder="Your Timezone" value="<%= user?.timezone || '' %>" />
+            </div>
+          </div>
+
+          <div class="email-address">
+            <label>My Email Address</label>
+
+            <div class="email-box">
+              <p><%= user?.email || "alexarawles@gmail.com" %></p>
+              <span>1 month ago</span>
+            </div>
+
+            <button type="button" class="add-email">+ Add Email Address</button>
+          </div>
+
+          <button type="submit" class="save-btn">Save Changes</button>
+
+        </form>
+
+      </div>
+    </main>
+
+  </div>
+
+</body>
+</html>

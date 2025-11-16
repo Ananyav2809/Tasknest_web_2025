@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskNest - Sign In</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="left-panel">
+      <div class="logo">
+        <img src="logo.png" alt="TaskNest Logo" />
+        <h1>TaskNest</h1>
+      </div>
+      <p class="subtitle">Create a new account to manage your tasks.</p>
+
+      <form class="login-form" id="signupForm" action="/user/new" method="POST">
+        <label for="name">NAME</label>
+        <input type="text" id="name" name="name" placeholder="John Doe" required />
+
+        <label for="password">PASSWORD</label>
+        <input type="password" id="password" name="password" placeholder="••••••••••••" required />
+
+        <button type="submit" class="signin-btn">Sign Up</button>
+      </form>
+
+      <div class="divider">
+        <span>Or</span>
+      </div>
+
+      <button class="google-btn">
+        <img src="google-icon.png" alt="Google Icon" />
+        Sign up with Google
+      </button>
+    </div>
+
+    <div class="right-panel">
+      <img src="illustration.png" alt="Task Illustration" />
+    </div>
+  </div>
+<script>
+document.getElementById('signupForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const password = document.getElementById("password").value;
+
+    const res = await fetch("/user/new", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, password })
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+        window.location.href = data.redirect;
+    } else {
+        alert(data.message);
+    }
+});
+</script>
+</body>
+</html>

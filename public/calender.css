@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  height: 100%; width: 100%;
+  font-family: 'Inter', sans-serif;
+  background: #f5f6f8; color: #333;
+}
+
+.container { width: 100vw; height: 100vh; display: flex; overflow: hidden; }
+
+.sidebar {
+  width: 240px;
+  background-color: #0050ff;
+  color: white;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.logo span {
+  color: white;
+}
+
+.sidebar ul { list-style: none; padding: 0; }
+.sidebar ul li,
+.logout {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  margin: 16px 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.sidebar ul li img,
+.logout img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.sidebar ul li.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 8px;
+  font-weight: bold;
+}
+
+.logout { margin-top: auto; }
+
+.main {
+  flex-grow: 1;
+  padding: 30px 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  overflow-y: auto;
+}
+
+.header {
+  background: #eceff2;
+  border-radius: 10px;
+  padding: 20px 25px;
+}
+.header h1 { margin: 0; font-weight: 700; font-size: 26px; color: #002b5c; }
+
+.calendar-container {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.calendar-section {
+  flex: 2;
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.right-column {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.month-nav {
+  display: flex; align-items: center; gap: 10px;
+}
+.month-nav button {
+  border: none; background: #0048ff; color: white;
+  padding: 6px 10px; border-radius: 6px; cursor: pointer;
+}
+.month-year {
+  font-size: 22px; font-weight: 600; color: #0048ff;
+}
+
+.new-task-btn {
+  background: #0048ff;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  align-self: flex-end;
+  transition: 0.2s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.new-task-btn:hover {
+  background: #0036c9;
+  transform: scale(1.05);
+}
+
+.calendar-grid {
+  display: grid; grid-template-columns: repeat(7, 1fr);
+  gap: 8px; background: white; padding: 16px; border-radius: 12px;
+}
+
+.day-name { font-weight: 600; text-align: center; color: #555; }
+.day {
+  text-align: center; padding: 8px; border-radius: 8px;
+  background: #f1f3f9; cursor: pointer; font-size: 14px;
+}
+.day:hover { background: #dfe7ff; }
+.selected { background: #4caf50 !important; color: white; font-weight: bold; }
+
+.day.high { background: #ff6b6b; color: #fff; }
+.day.medium { background: #ffa502; color: #fff; }
+.day.low { background: #2ed573; color: #fff; }
+
+.legend {
+  margin-top: 12px;
+  display:flex;
+  flex-direction: column;
+  align-items:flex-start;
+  gap:10px;
+}
+.legend-item { display:flex; align-items:center; gap:8px; color:#444; font-size:14px; }
+.dot { width:10px; height:10px; border-radius:50%; }
+.dot.red { background:#ff6b6b }
+.dot.orange { background:#ffa502 }
+.dot.green { background:#2ed573 }
+
+.tasks-box, .week-box {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+.week-box h3 { color:#0048ff; margin-bottom: 10px; }
+
+.modal {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.5);
+  justify-content: center; align-items: center;
+  z-index: 10;
+}
+.modal-content {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  width: 400px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.modal-content h3 { margin-top: 0; color: #0048ff; }
+.modal-content input, .modal-content select, .modal-content textarea {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+}
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.btn {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.btn.save { background:#0048ff; color:white; }
+.btn.cancel { background:#ccc; color:black; }
+
+@media(max-width: 900px) {
+  .calendar-container { flex-direction: column; }
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "title": "Complete DSA Assignment",
+    "description": "Implement stack and queue operations",
+    "priority": "High",
+    "dueDate": "2025-10-30",
+    "remarks": "Check edge cases"
+  },
+  {
+    "title": "Python Project",
+    "description": "Netflix Data Analysis",
+    "priority": "Medium",
+    "dueDate": "2025-11-02",
+    "remarks": "Add correlation graph"
+  },
+  {
+    "title": "Linear Algebra Quiz",
+    "description": "Vector spaces and transformations",
+    "priority": "High",
+    "dueDate": "2025-11-01",
+    "remarks": "Revise basis and dimension"
+  },
+  {
+    "title": "C Programming Practice",
+    "description": "Pointers and memory allocation",
+    "priority": "Low",
+    "dueDate": "2025-11-05",
+    "remarks": "Revise malloc and calloc"
+  }
+]

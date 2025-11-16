@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TaskNest Calendar</title>
+
+  <link rel="stylesheet" href="/css/calendar.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <aside class="sidebar">
+      <h2 class="logo">Task<span>Nest</span></h2>
+
+      <nav>
+        <ul class="menu">
+          <li>
+            <a href="/dashboard">
+              <img src="/images/dashboard.png" alt="Dashboard" />
+              Dashboard
+            </a>
+          </li>
+
+          <li class="active">
+            <img src="/images/calender.png" alt="Calendar" />
+            Calendar
+          </li>
+
+          <li>
+            <a href="/tasks">
+              <img src="/images/tasks.png" alt="Tasks" />
+              Tasks
+            </a>
+          </li>
+
+          <li>
+            <a href="/settings">
+              <img src="/images/settings.png" alt="Settings" />
+              Settings
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="logout">
+        <img src="/images/logout.png" alt="Logout" /> Logout
+      </div>
+    </aside>
+
+
+    <main class="main">
+      <section class="header">
+        <h1>Calendar</h1>
+        <p>Manage your schedule and upcoming tasks</p>
+      </section>
+
+      <div class="calendar-container">
+
+
+        <div class="calendar-section">
+          <div class="calendar-header">
+            <div class="month-nav">
+              <button id="prevMonth">&lt;</button>
+              <span class="month-year" id="monthYear"></span>
+              <button id="nextMonth">&gt;</button>
+            </div>
+          </div>
+
+          <div class="calendar-grid" id="calendar"></div>
+
+          <div class="legend">
+            <div class="legend-item"><div class="dot red"></div>High Priority</div>
+            <div class="legend-item"><div class="dot orange"></div>Medium Priority</div>
+            <div class="legend-item"><div class="dot green"></div>Low Priority</div>
+          </div>
+        </div>
+
+        <div class="right-column">
+          <button class="new-task-btn" id="openModal">+ New Task</button>
+
+          <div class="tasks-box" id="taskList">
+            <h3>Tasks for Selected Day</h3>
+            <p>Select a date to view tasks.</p>
+          </div>
+
+          <div class="week-box" id="weekBox">
+            <h3>This Week</h3>
+            <div id="weekTasksContainer"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal" id="taskModal">
+    <div class="modal-content">
+      <h3>Add New Task</h3>
+
+      <input type="text" id="taskTitle" placeholder="Task Title" required />
+      <textarea id="taskDesc" placeholder="Task Description"></textarea>
+      <input type="date" id="taskDate" />
+
+      <select id="taskPriority">
+        <option value="high">High Priority</option>
+        <option value="medium">Medium Priority</option>
+        <option value="low">Low Priority</option>
+      </select>
+
+      <div class="modal-buttons">
+        <button class="btn cancel" id="closeModal">Cancel</button>
+        <button class="btn save" id="saveTask">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/calendar.json"></script>
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskNest Dashboard</title>
+
+  <link rel="stylesheet" href="/dashboard.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container">
+
+    <aside class="sidebar">
+      <h2 class="logo">Task<span>Nest</span></h2>
+
+      <nav>
+        <ul class="menu">
+          <li class="active">
+            <img src="/dashboard.png" alt="Dashboard" /> Dashboard
+          </li>
+
+          <li>
+            <a href="/calendar">
+              <img src="/calender.png" alt="Calendar" /> Calendar
+            </a>
+          </li>
+
+          <li>
+            <a href="/tasks">
+              <img src="/tasks.png" alt="Tasks" /> Tasks
+            </a>
+          </li>
+
+          <li>
+            <a href="/settings">
+              <img src="/settings.png" alt="Settings" /> Settings
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="logout">
+        <img src="/logout.png" alt="Logout" />
+        <a href="/logout">Logout</a>
+      </div>
+    </aside>
+
+    <main class="main">
+
+      <section class="header">
+        <h1>Dashboard</h1>
+        <p>Welcome back <%= user.name %>! Manage your tasks and track your progress below.</p>
+      </section>
+
+      <section class="stats">
+        <div class="stat"><p>Hours Worked</p><strong>24</strong></div>
+        <div class="stat"><p>Tasks Done</p><strong>12</strong></div>
+        <div class="stat"><p>Projects</p><strong>05</strong></div>
+        <div class="stat"><p>Pending</p><strong>03</strong></div>
+      </section>
+
+
+      <section class="charts">
+        <div class="chart-box">
+          <h3>Tasks Completed (Weekly)</h3>
+          <canvas id="taskChart"></canvas>
+        </div>
+
+        <div class="chart-box">
+          <h3>Task Priority Distribution</h3>
+          <canvas id="priorityChart"></canvas>
+        </div>
+      </section>
+
+      <section class="calendar">
+        <h3>Calendar Overview</h3>
+        <p id="date-text"></p>
+
+        <div id="calendar-grid" class="calendar-grid"></div>
+
+        <div class="legend">
+          <span class="dot high"></span> High
+          <span class="dot medium"></span> Medium
+          <span class="dot low"></span> Low
+        </div>
+      </section>
+    </main>
+
+    <aside class="notifications">
+      <h3>Notifications</h3>
+
+      <div class="tabs">
+        <span class="active">Upcoming</span>
+        <span>Overdue</span>
+      </div>
+
+      <div class="notify high">
+        <p><strong>Debug production issue</strong></p>
+        <span>3 days left</span>
+      </div>
+
+      <div class="notify medium">
+        <p><strong>Submit proposal</strong></p>
+        <span>Due in 5 days</span>
+      </div>
+
+      <div class="notify low">
+        <p><strong>Update docs</strong></p>
+        <span>Next week</span>
+      </div>
+    </aside>
+
+  </div>
+
+  <script src="/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TaskNest Tasks</title>
+
+  <link rel="stylesheet" href="/css/tasks.css" />
+</head>
+
+<body>
+  <div class="container">
+
+    <aside class="sidebar">
+      <h2 class="logo">Task<span>Nest</span></h2>
+
+      <nav>
+        <ul class="menu">
+
+          <li>
+            <a href="/dashboard">
+              <img src="/images/dashboard.png" alt="Dashboard" />
+              Dashboard
+            </a>
+          </li>
+
+          <li>
+            <a href="/calendar">
+              <img src="/images/calender.png" alt="Calendar" />
+              Calendar
+            </a>
+          </li>
+
+          <li class="active">
+            <img src="/images/tasks.png" alt="Tasks" />
+            Tasks
+          </li>
+
+          <li>
+            <a href="/settings">
+              <img src="/images/settings.png" alt="Settings" />
+              Settings
+            </a>
+          </li>
+
+        </ul>
+      </nav>
+
+      <div class="logout">
+        <img src="/images/logout.png" alt="Logout" />
+        Logout
+      </div>
+    </aside>
+
+    <main class="main">
+      <section class="header">
+        <h1>Tasks</h1>
+        <p>Manage and track all your tasks</p>
+      </section>
+
+      <section class="stats">
+        <div class="stat"><p>Total task</p><strong id="total">00</strong></div>
+        <div class="stat"><p>Completed</p><strong id="completed">00</strong></div>
+        <div class="stat"><p>In Progress</p><strong id="progress">00</strong></div>
+        <div class="stat"><p>Overdue</p><strong id="overdue">00</strong></div>
+      </section>
+
+      <section class="filters-row-2">
+        <button class="btn-add-task" id="openAddTaskModal">+ Add Task</button>
+
+        <input type="search" id="searchInput" placeholder="Search tasks..." />
+
+        <select id="priorityFilter">
+          <option value="All">All Priority</option>
+          <option value="High">High</option>
+          <option value="Medium">Medium</option>
+          <option value="Low">Low</option>
+        </select>
+      </section>
+
+      <table id="taskTable">
+        <thead>
+          <tr>
+            <th>Tasks</th>
+            <th>Description</th>
+            <th>Priority</th>
+            <th>Due Date</th>
+            <th>Remarks</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody id="taskTableBody">
+          <% if (tasks && tasks.length > 0) { %>
+            <% tasks.forEach(task => { %>
+              <tr>
+                <td><%= task.title %></td>
+                <td><%= task.description %></td>
+                <td><%= task.priority %></td>
+                <td><%= task.dueDate %></td>
+                <td><%= task.remarks || "—" %></td>
+                <td>
+                  <button class="editBtn" data-id="<%= task._id %>">Edit</button>
+                  <button class="deleteBtn" data-id="<%= task._id %>">Delete</button>
+                </td>
+              </tr>
+            <% }) %>
+          <% } else { %>
+            <tr>
+              <td colspan="6" style="text-align:center;">No tasks found</td>
+            </tr>
+          <% } %>
+        </tbody>
+
+      </table>
+    </main>
+  </div>
+
+  <div id="taskFormModal" class="modal">
+    <div class="modal-content">
+      <h3 id="formTitle">Add Task</h3>
+
+      <form id="taskForm">
+        <input type="text" id="title" placeholder="Task Title" required />
+
+        <textarea id="description" placeholder="Task Description" rows="2" required></textarea>
+
+        <select id="priority" required>
+          <option value="High">High</option>
+          <option value="Medium" selected>Medium</option>
+          <option value="Low">Low</option>
+        </select>
+
+        <input type="date" id="dueDate" required />
+
+        <input type="text" id="remarks" placeholder="Remarks" />
+
+        <div class="form-buttons">
+          <button type="submit" id="saveTaskBtn">Save Task</button>
+          <button type="button" id="cancelTaskBtn">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/tasks.json"></script>
+</body>
+</html>
